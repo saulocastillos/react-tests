@@ -20,17 +20,38 @@ import {
 describe("testing base functions", () => {
   it("should sum all array values", () => {
     expect(sumOfValues([3, 5, 6, 9])).toBe(23);
+    expect(sumOfValues([10, 7, 3, 20])).toBe(40);
   });
   it("should answer if a number is multiple of a target number", () => {
+    expect(isMultipleOf(3, 1)).toBe(false);
     expect(isMultipleOf(3, 9)).toBe(true);
+    expect(isMultipleOf(3, 57)).toBe(true);
+    expect(isMultipleOf(3, 56)).toBe(false);
+    expect(isMultipleOf(5, 1)).toBe(false);
+    expect(isMultipleOf(5, 15)).toBe(true);
+    expect(isMultipleOf(5, 205)).toBe(true);
+    expect(isMultipleOf(5, 203)).toBe(false);
+    expect(isMultipleOf(7, 1)).toBe(false);
+    expect(isMultipleOf(7, 7)).toBe(true);
+    expect(isMultipleOf(7, 49)).toBe(true);
+    expect(isMultipleOf(7, 58)).toBe(false);
   });
   it("should answer if a number is multiple of all target numbers", () => {
     expect(isMultipleOfAllTargets([3, 5], 15)).toBe(true);
+    expect(isMultipleOfAllTargets([3, 5], 360)).toBe(true);
+    expect(isMultipleOfAllTargets([3, 5], 361)).toBe(false);
     expect(isMultipleOfAllTargets([3, 4], 15)).toBe(false);
+    expect(isMultipleOfAllTargets([3, 5, 7], 105)).toBe(true);
+    expect(isMultipleOfAllTargets([3, 5, 7], 210)).toBe(true);
+    expect(isMultipleOfAllTargets([3, 5, 7], 945)).toBe(true);
+    expect(isMultipleOfAllTargets([3, 5, 7], 15)).toBe(false);
   });
   it("should answer if a number is multiple of any target numbers", () => {
     expect(isMultipleOfAnyTargets([3, 4], 15)).toBe(true);
     expect(isMultipleOfAnyTargets([0, 4], 15)).toBe(false);
+    expect(isMultipleOfAnyTargets([3, 5, 7], 45)).toBe(true);
+    expect(isMultipleOfAnyTargets([3, 5, 7], 12)).toBe(true);
+    expect(isMultipleOfAnyTargets([3, 5, 7], 49)).toBe(true);
   });
   it("should answer the sum of squares of digits", () => {
     expect(sumOfSquareOfDigits(7)).toBe(49);
@@ -84,9 +105,12 @@ describe("testing base functions", () => {
 describe("exercise 1", () => {
   it("should answer the sum of all natural numbers multiple of 3 or 5", () => {
     expect(sumOfAnyMultiplesBy([3, 5], 10)).toBe(23);
+    expect(sumOfAnyMultiplesBy([3, 5], 101)).toBe(2418);
   });
   it("should answer the sum of all natural numbers multiple of 3 and 5", () => {
-    expect(sumOfAllMultiplesBy([3, 5], 15)).toBe(15);
+    expect(sumOfAllMultiplesBy([3, 5], 16)).toBe(15);
+    expect(sumOfAllMultiplesBy([3, 5], 106)).toBe(420);
+    expect(sumOfAllMultiplesBy([3, 5], 1000)).toBe(33165);
   });
   it("should sum all natural numbers multiply of (3 or 5) e 7", () => {
     expect(sumOfOrTargertAndTargetsBy([3, 5], [7], 30)).toBe(21);
