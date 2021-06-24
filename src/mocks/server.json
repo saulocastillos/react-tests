@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "",
+      "cep": ""
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "name": "",
+        "cep": ""
+      },
+      "products": [
+        {
+          "id": 1,
+          "name": "Smartphone X1",
+          "price": 1000.0
+        },
+        {
+          "id": 2,
+          "name": "Smartphone X2",
+          "price": 2000.0
+        }
+      ],
+      "total": 2000.0
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Smartphone X1",
+      "price": 1000.0
+    },
+    {
+      "id": 2,
+      "name": "Smartphone X2",
+      "price": 2000.0
+    },
+    {
+      "id": 3,
+      "name": "Smartphone X3",
+      "price": 3000.0
+    }
+  ]
+}

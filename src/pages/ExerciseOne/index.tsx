@@ -1,10 +1,10 @@
-import { Container } from "./styles";
+import { Container } from './styles'
 
 import {
   sumOfAnyMultiplesBy,
   sumOfAllMultiplesBy,
   sumOfOrTargertAndTargetsBy,
-} from "../../utils";
+} from '../../utils'
 
 function ExerciseOne() {
   return (
@@ -28,7 +28,7 @@ function ExerciseOne() {
         {sumOfOrTargertAndTargetsBy([3, 5], [7], 1000)}
       </ul>
     </Container>
-  );
+  )
 }
 
-export default ExerciseOne;
+export default ExerciseOne
