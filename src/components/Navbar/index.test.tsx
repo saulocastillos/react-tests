@@ -1,23 +1,19 @@
 import { MemoryRouter } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
-import { act } from '../../tests'
+import { act } from 'react-dom/test-utils'
 
-import Home from './index'
+import Navbar from './index'
 
 /**
  * Deve mostrar links para as páginas de exercício, 1 para cada dos 4 disponíveis.
  */
 
-const MemoryRouterWrapper = () => {
-  return (
+describe('Navbar', () => {
+  render(
     <MemoryRouter initialEntries={['/']}>
-      <Home />
+      <Navbar />
     </MemoryRouter>
   )
-}
-
-describe('Home', () => {
-  render(<MemoryRouterWrapper />)
 
   const link1 = screen.getByRole('link', { name: 'exerciseone' })
   const link2 = screen.getByRole('link', { name: 'exercisetwo' })
@@ -28,14 +24,18 @@ describe('Home', () => {
     name: 'exercisefour',
   })
 
-  it('should show four exercise links in home', () => {
+  it('should show four exercise links in Navbar', () => {
     expect(link1).toBeInTheDocument()
     expect(link2).toBeInTheDocument()
     expect(link3).toBeInTheDocument()
     expect(link4).toBeInTheDocument()
   })
   it('should navigate to exercise one page', () => {
-    render(<MemoryRouterWrapper />)
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Navbar />
+      </MemoryRouter>
+    )
 
     act(() => {
       link1.dispatchEvent(new MouseEvent('click', { bubbles: true }))
@@ -44,7 +44,11 @@ describe('Home', () => {
     expect(screen.queryByText('Exercise One')).toBeInTheDocument()
   })
   it('should navigate to exercise two page', () => {
-    render(<MemoryRouterWrapper />)
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Navbar />
+      </MemoryRouter>
+    )
 
     act(() => {
       link2.dispatchEvent(new MouseEvent('click', { bubbles: true }))
@@ -53,7 +57,11 @@ describe('Home', () => {
     expect(screen.queryByText('Exercise Two')).toBeInTheDocument()
   })
   it('should navigate to exercise three page', () => {
-    render(<MemoryRouterWrapper />)
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Navbar />
+      </MemoryRouter>
+    )
 
     act(() => {
       link3.dispatchEvent(new MouseEvent('click', { bubbles: true }))
@@ -62,7 +70,11 @@ describe('Home', () => {
     expect(screen.queryByText('Exercise Three')).toBeInTheDocument()
   })
   it('should navigate to exercise four page', () => {
-    render(<MemoryRouterWrapper />)
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Navbar />
+      </MemoryRouter>
+    )
 
     act(() => {
       link4.dispatchEvent(new MouseEvent('click', { bubbles: true }))

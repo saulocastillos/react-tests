@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Container } from './styles'
+import Navbar from '../../components/Navbar'
 
 import { isAHappyNumber } from '../../utils'
 
@@ -9,6 +10,7 @@ function ExerciseTwo() {
   return (
     <Container>
       <h1>Exercise Two</h1>
+      <Navbar />
       <p>Dado um número natural qualquer, determina se é um número feliz</p>
       <input
         onChange={(e) => {

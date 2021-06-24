@@ -30,15 +30,7 @@ it('should render a exercise two page', () => {
   expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
     "<div class=\\"sc-bdnxRM\\">
       <h1>Home</h1>
-      <ul><a role=\\"link\\" aria-label=\\"exerciseone\\" href=\\"/exerciseone\\">
-          <li>Exercise One</li>
-        </a><a role=\\"link\\" aria-label=\\"exercisetwo\\" href=\\"/exercisetwo\\">
-          <li>Exercise Two</li>
-        </a><a role=\\"link\\" aria-label=\\"exercisethree\\" href=\\"/exercisethree\\">
-          <li>Exercise Three</li>
-        </a><a role=\\"link\\" aria-label=\\"exercisefour\\" href=\\"/exercisefour\\">
-          <li>Exercise Four</li>
-        </a></ul>
+      <div class=\\"sc-gtsrHT wxswG\\"><a role=\\"link\\" aria-label=\\"home\\" href=\\"/\\">Home</a><a role=\\"link\\" aria-label=\\"exerciseone\\" href=\\"/exerciseone\\">Exercise One</a><a role=\\"link\\" aria-label=\\"exercisetwo\\" href=\\"/exercisetwo\\">Exercise Two</a><a role=\\"link\\" aria-label=\\"exercisethree\\" href=\\"/exercisethree\\">Exercise Three</a><a role=\\"link\\" aria-label=\\"exercisefour\\" href=\\"/exercisefour\\">Exercise Four</a></div>
     </div>"
   `)
 })

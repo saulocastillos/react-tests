@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import { Container, ProductsBox, CartBox } from './styles'
+import Navbar from '../../components/Navbar'
 
 import ProductCard from '../../components/ProductCard'
 
@@ -13,6 +13,7 @@ function ExerciseFour() {
   return (
     <Container>
       <h1>Exercise Four</h1>
+      <Navbar />
       <h2>Store</h2>
       <ProductsBox>
         {products.map((product) => {
