@@ -1,3 +1,57 @@
+# Exercicios
+
+Exercícios propostos para aprendizado de testes.
+
+## Para executar
+
+Execute os passos abaixo:
+
+1. Clone o projeto e entre na pasta:
+
+```bash
+git clone https://github.com/saulocastillos/react-tests.git && cd react-tests
+```
+
+2. Execute o yarn ou npm:
+
+```bash
+yarn
+```
+
+ou
+
+```bash
+npm install
+```
+
+3. Execute o projeto
+
+```bash
+yarn start
+```
+
+ou
+
+```bash
+npm start
+```
+
+4. Para fazer os testes:
+
+4.a. Testes com cobertura
+
+```bash
+yarn test:coverage
+npm test:coverage
+```
+
+ou
+
+```bash
+yarn test
+npm test
+```
+
 ### Exercício 1 - Múltiplos de 3 ou 5
 
 Dado todos os números naturais abaixo de 10;
