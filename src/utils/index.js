@@ -1,4 +1,4 @@
-export { isPrime, sumOfValues, sumOfSquareOfDigits } from "./base";
+export { isPrime, sumOfValues, sumOfSquareOfDigits } from './base'
 export {
   isMultipleOf,
   isMultipleOfAllTargets,
@@ -6,8 +6,8 @@ export {
   sumOfAnyMultiplesBy,
   sumOfAllMultiplesBy,
   sumOfOrTargertAndTargetsBy,
-} from "./multiples";
-export { isAHappyNumber } from "./happyNumbers";
+} from './multiples'
+export { isAHappyNumber } from './happyNumbers'
 export {
   equivalentNumberByLetter,
   isThisWordHappy,
@@ -15,4 +15,4 @@ export {
   isThisWordMultipleOf,
   sumLetterValuesInAWord,
   isThisWordPrimeHappyMultiple,
-} from "./words";
+} from './words'
