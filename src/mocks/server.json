@@ -9,12 +9,8 @@
   "cart": [
     {
       "id": 1,
-      "user": {
-        "id": 1,
-        "name": "",
-        "cep": ""
-      },
-      "products": [
+      "user": null,
+      "itens": [
         {
           "id": 1,
           "name": "Smartphone X1",

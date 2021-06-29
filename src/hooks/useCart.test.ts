@@ -1,4 +1,4 @@
-import { render, screen, userEvent, renderHook, act, cleanup } from '../tests'
+import { renderHook, act } from '../tests'
 import useCart from './useCart'
 
 /**
@@ -17,13 +17,6 @@ const defaultProduct: Product = {
   id: 1,
   name: 'Smartphone',
   price: 500,
-}
-
-const defaultCart: Cart = {
-  id: 1,
-  user: null,
-  itens: [],
-  total: 0,
 }
 
 describe('base functions', () => {
@@ -53,19 +46,20 @@ describe('base functions', () => {
 
     unmount()
   })
-
   it('should add more items of it', () => {
     const { result } = renderHook(() => useCart())
 
     act(() => {
-      result.current.setCart(defaultCart)
+      result.current.setCart({
+        id: 1,
+        user: null,
+        itens: [],
+        total: 0,
+      })
     })
 
     act(() => {
       result.current.addItemOnCart(defaultProduct)
-    })
-
-    act(() => {
       result.current.addItemOnCart(defaultProduct)
     })
 
@@ -90,7 +84,12 @@ describe('base functions', () => {
     const { result } = renderHook(() => useCart())
 
     act(() => {
-      result.current.setCart(defaultCart)
+      result.current.setCart({
+        id: 1,
+        user: null,
+        itens: [],
+        total: 0,
+      })
     })
 
     act(() => {
@@ -112,7 +111,12 @@ describe('base functions', () => {
     const { result } = renderHook(() => useCart())
 
     act(() => {
-      result.current.setCart(defaultCart)
+      result.current.setCart({
+        id: 1,
+        user: null,
+        itens: [],
+        total: 0,
+      })
     })
 
     act(() => {

@@ -25,6 +25,7 @@ function ProductCard({
       <p>{product?.name}</p>
       <p>{product?.price}</p>
       <button
+        data-testid='addToCartButton'
         type='button'
         onClick={() => {
           action()

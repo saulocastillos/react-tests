@@ -12,8 +12,7 @@ const useCart = () => {
 
   const getTotalCart = (cart: Cart) => {
     const _itensTotals = cart.itens.map((cartItem) => cartItem.total)
-    const total = _itensTotals.reduce((curr, acc) => curr + acc, 0)
-    return total
+    return _itensTotals.reduce((curr, acc) => curr + acc, 0)
   }
 
   const getItemTotal = (item: CartItem) => {
@@ -29,18 +28,10 @@ const useCart = () => {
 
   const addItemOnCart = (product: Product) => {
     const _cart = { ...cart }
-    let founded = findProductInCartItens(_cart.itens, product)
+    const founded = findProductInCartItens(_cart.itens, product)
     if (founded.item) {
-      founded = {
-        ...founded,
-        item: {
-          ...founded.item,
-          quantity: founded.item.quantity + 1,
-        },
-      }
+      founded.item.quantity += 1
       founded.item.total = getItemTotal(founded.item)
-      _cart.itens.splice(founded.index, 1)
-      _cart.itens = [...cart.itens, founded.item]
     } else {
       _cart.itens.push({
         quantity: 1,
@@ -54,21 +45,13 @@ const useCart = () => {
 
   const removeItemFromCart = (product: Product) => {
     const _cart = { ...cart }
-    let founded = findProductInCartItens(_cart.itens, product)
+    const founded = findProductInCartItens(_cart.itens, product)
     if (founded.item) {
       if (founded.item.quantity === 1) {
         _cart.itens.splice(founded.index, 1)
       } else {
-        founded = {
-          ...founded,
-          item: {
-            ...founded.item,
-            quantity: founded.item.quantity - 1,
-          },
-        }
+        founded.item.quantity -= 1
         founded.item.total = getItemTotal(founded.item)
-        _cart.itens.splice(founded.index, 1)
-        _cart.itens = [...cart.itens, founded.item]
       }
     }
     _cart.total = getTotalCart(_cart)

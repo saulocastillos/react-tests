@@ -8,11 +8,12 @@ function ExerciseTwo() {
   const [numberInput, setNumberInput] = useState(null)
 
   return (
-    <Container>
+    <Container data-testid='exercisetwo'>
       <h1>Exercise Two</h1>
       <Navbar />
       <p>Dado um número natural qualquer, determina se é um número feliz</p>
       <input
+        data-testid='input'
         onChange={(e) => {
           setNumberInput(e.target.value)
         }}

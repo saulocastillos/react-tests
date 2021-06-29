@@ -6,7 +6,7 @@ interface CartItem {
 
 interface Cart {
   id: number
-  user?: User
+  user: User
   itens: CartItem[]
   total: number
 }

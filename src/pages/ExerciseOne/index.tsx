@@ -9,7 +9,7 @@ import {
 
 function ExerciseOne() {
   return (
-    <Container>
+    <Container data-testid='exerciseone'>
       <h1>Exercise One</h1>
       <Navbar />
       <ul>

@@ -3,7 +3,7 @@ import { Container } from './styles'
 
 function Navbar() {
   return (
-    <Container>
+    <Container data-testid='navbar'>
       <Link role='link' aria-label='home' to='/'>
         Home
       </Link>

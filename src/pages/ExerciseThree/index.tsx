@@ -5,7 +5,7 @@ import { isThisWordPrimeHappyMultiple } from '../../utils'
 
 function ExerciseThree() {
   return (
-    <Container>
+    <Container data-testid='exercisethree'>
       <h1>Exercise Three</h1>
       <Navbar />
       <p>

@@ -1,8 +1,11 @@
-import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
-import { render, unmountComponentAtNode } from 'react-dom'
-import { act } from 'react-dom/test-utils'
-import pretty from 'pretty'
+import {
+  render,
+  act,
+  screen,
+  fireEvent,
+  unmountComponentAtNode,
+} from '../../tests'
 
 import ExerciseTwo from './index'
 
@@ -26,17 +29,42 @@ const MemoryRouterWrapper = () => {
   )
 }
 
-it('should render a exercise two page', () => {
+it('should render without crashing', () => {
   act(() => {
     render(<MemoryRouterWrapper />, container)
   })
 
-  expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
-    "<div class=\\"sc-bdnxRM\\">
-      <h1>Exercise Two</h1>
-      <div class=\\"sc-gtsrHT wxswG\\"><a role=\\"link\\" aria-label=\\"home\\" href=\\"/\\">Home</a><a role=\\"link\\" aria-label=\\"exerciseone\\" href=\\"/exerciseone\\">Exercise One</a><a role=\\"link\\" aria-label=\\"exercisetwo\\" href=\\"/exercisetwo\\">Exercise Two</a><a role=\\"link\\" aria-label=\\"exercisethree\\" href=\\"/exercisethree\\">Exercise Three</a><a role=\\"link\\" aria-label=\\"exercisefour\\" href=\\"/exercisefour\\">Exercise Four</a></div>
-      <p>Dado um número natural qualquer, determina se é um número feliz</p><input>
-      <p>Resposta:</p>
-    </div>"
-  `)
+  expect(screen.getByTestId('exercisetwo')).toBeInTheDocument()
+  expect(screen.getByTestId('navbar')).toBeInTheDocument()
+  expect(screen.getByTestId('input')).toBeInTheDocument()
+  expect(screen.queryByText('É feliz')).not.toBeInTheDocument()
+  expect(screen.queryByText('Não é feliz')).not.toBeInTheDocument()
+})
+
+it('should render "É feliz" when the input number is a happy number', () => {
+  act(() => {
+    render(<MemoryRouterWrapper />, container)
+  })
+
+  const input = screen.getByTestId('input')
+
+  fireEvent.change(input, { target: { value: '23' } })
+  expect(screen.queryByText('É feliz')).toBeInTheDocument()
+
+  fireEvent.change(input, { target: { value: '10' } })
+  expect(screen.queryByText('É feliz')).toBeInTheDocument()
+})
+
+it('should render "Não é feliz" when the input number is not a happy number', () => {
+  act(() => {
+    render(<MemoryRouterWrapper />, container)
+  })
+
+  const input = screen.getByTestId('input')
+
+  fireEvent.change(input, { target: { value: '5' } })
+  expect(screen.queryByText('Não é feliz')).toBeInTheDocument()
+
+  fireEvent.change(input, { target: { value: '423' } })
+  expect(screen.queryByText('Não é feliz')).toBeInTheDocument()
 })

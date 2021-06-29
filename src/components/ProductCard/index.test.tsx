@@ -1,8 +1,15 @@
-import { render, unmountComponentAtNode } from 'react-dom'
-import { act } from 'react-dom/test-utils'
-import pretty from 'pretty'
+import {
+  render,
+  act,
+  screen,
+  renderHook,
+  unmountComponentAtNode,
+} from '../../tests'
+import useCart from '../../hooks/useCart'
 
-import Component from './index'
+import ProductCart from './index'
+
+import { products } from '../../mocks/server.json'
 
 let container = null
 beforeEach(() => {
@@ -16,15 +23,50 @@ afterEach(() => {
   container = null
 })
 
-it('should render a card component', () => {
+it('should render a example product cart', () => {
+  const { result, unmount } = renderHook(() => useCart())
+
   act(() => {
-    render(<Component />, container)
+    render(
+      <ProductCart
+        product={products[0]}
+        action={result.current.addItemOnCart}
+      />,
+      container
+    )
   })
 
-  expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
-    "<div class=\\"sc-bdnxRM hPkvCZ\\">
-      <p></p>
-      <p></p><button type=\\"button\\">Adicionar</button>
-    </div>"
-  `)
+  expect(screen.getByText(products[0].name))
+
+  unmount()
+})
+
+it('should increase qtt of a product on cart', () => {
+  const { result, unmount } = renderHook(() => useCart())
+
+  act(() => {
+    result.current.cleanCart()
+  })
+
+  act(() => {
+    render(
+      <ProductCart
+        product={products[0]}
+        action={() => result.current.addItemOnCart(products[0])}
+      />,
+      container
+    )
+  })
+
+  const addToCartButton = screen.getAllByTestId('addToCartButton')[0]
+
+  act(() => {
+    addToCartButton.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+  })
+
+  expect(result.current.cart.itens[0].quantity).toBe(1)
+  expect(result.current.cart.itens[0].product.name).toBe(products[0].name)
+  expect(result.current.cart.itens[0].product.price).toBe(products[0].price)
+
+  unmount()
 })

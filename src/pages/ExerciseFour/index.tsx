@@ -1,7 +1,8 @@
-import { Container, ProductsBox, CartBox } from './styles'
-import Navbar from '../../components/Navbar'
+import { Container, ProductsBox } from './styles'
 
+import Navbar from '../../components/Navbar'
 import ProductCard from '../../components/ProductCard'
+import CartSummary from '../../components/CartSummary'
 
 import useCart from '../../hooks/useCart'
 
@@ -11,14 +12,15 @@ function ExerciseFour() {
   const { cart, addItemOnCart, removeItemFromCart } = useCart()
 
   return (
-    <Container>
+    <Container data-testid='exercisefour'>
       <h1>Exercise Four</h1>
       <Navbar />
       <h2>Store</h2>
-      <ProductsBox>
-        {products.map((product) => {
+      <ProductsBox data-testid='productbox'>
+        {products?.map((product) => {
           return (
             <ProductCard
+              data-testid='productcard'
               key={product.id}
               product={product}
               action={() => {
@@ -28,51 +30,11 @@ function ExerciseFour() {
           )
         })}
       </ProductsBox>
-      <h2>Cart Summary</h2>
-      <CartBox>
-        <table>
-          <thead>
-            <tr>
-              <th>Quantity</th>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Total</th>
-              <th className='actions'>Actions</th>
-            </tr>
-          </thead>
-          {cart.itens.map((item) => {
-            return (
-              <tbody key={item.product.id}>
-                <tr>
-                  <td>{item.quantity}</td>
-                  <td>{item.product.name}</td>
-                  <td>{item.product.price}</td>
-                  <td>{item.total}</td>
-                  <td className='actions'>
-                    <button
-                      type='button'
-                      onClick={() => {
-                        removeItemFromCart(item.product)
-                      }}
-                    >
-                      -
-                    </button>
-                    <button
-                      type='button'
-                      onClick={() => {
-                        addItemOnCart(item.product)
-                      }}
-                    >
-                      +
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            )
-          })}
-        </table>
-      </CartBox>
-      Total: {cart.total}
+      <CartSummary
+        cart={cart}
+        addItemOnCart={addItemOnCart}
+        removeItemFromCart={removeItemFromCart}
+      />
     </Container>
   )
 }
