@@ -1,24 +1,32 @@
+import Typography from '@eduzz/houston-ui/Typography'
 import { Link } from 'react-router-dom'
 import { Container } from './styles'
+
+const links = [
+  { name: 'Home', link: '/', ariaLabel: 'home' },
+  { name: 'Exercise One', link: '/exerciseone', ariaLabel: 'exerciseone' },
+  { name: 'Exercise Two', link: '/exercisetwo', ariaLabel: 'exercisetwo' },
+  {
+    name: 'Exercise Three',
+    link: '/exercisethree',
+    ariaLabel: 'exercisethree',
+  },
+  { name: 'Exercise Four', link: '/exercisefour', ariaLabel: 'exercisefour' },
+]
 
 function Navbar() {
   return (
     <Container data-testid='navbar'>
-      <Link role='link' aria-label='home' to='/'>
-        Home
-      </Link>
-      <Link role='link' aria-label='exerciseone' to='/exerciseone'>
-        Exercise One
-      </Link>
-      <Link role='link' aria-label='exercisetwo' to='/exercisetwo'>
-        Exercise Two
-      </Link>
-      <Link role='link' aria-label='exercisethree' to='/exercisethree'>
-        Exercise Three
-      </Link>
-      <Link role='link' aria-label='exercisefour' to='/exercisefour'>
-        Exercise Four
-      </Link>
+      {links.map((item) => {
+        const { name, link, ariaLabel } = item
+        return (
+          <Link role='link' aria-label={ariaLabel} to={link}>
+            <Typography size='medium' fontWeight='bold'>
+              {name}
+            </Typography>
+          </Link>
+        )
+      })}
     </Container>
   )
 }
