@@ -1,6 +1,7 @@
+import Table from '@eduzz/houston-ui/Table'
+import Typography from '@eduzz/houston-ui/Typography'
+import { useState } from 'react'
 import { Container, CartBox } from './styles'
-
-import { cart as mockCart } from '../../mocks/server.json'
 
 type CartSummaryType = {
   cart: Cart
@@ -13,29 +14,40 @@ const CartSummary = ({
   addItemOnCart,
   removeItemFromCart,
 }: CartSummaryType) => {
+  const [page, setPage] = useState(1)
+  const [perPage, setPerPage] = useState(10)
   return (
     <Container data-testid='cartsummary'>
-      <h2>Cart Summary</h2>
+      <Typography size='medium' fontWeight='bold'>
+        Cart Summary
+      </Typography>
       <CartBox>
-        <table>
-          <thead>
-            <tr>
-              <th>Quantity</th>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Total</th>
-              <th className='actions'>Actions</th>
-            </tr>
-          </thead>
+        <Table>
+          <Table.Header>
+            <Table.Column>Quantity</Table.Column>
+            <Table.Column>Product</Table.Column>
+            <Table.Column>Price</Table.Column>
+            <Table.Column>Total</Table.Column>
+            <Table.Column className='actions'>Actions</Table.Column>
+          </Table.Header>
           {cart?.itens?.map((item: CartItem) => {
             return (
-              <tbody key={item.product.id}>
-                <tr data-testid='product'>
-                  <td data-testid='productQtt'>{item.quantity}</td>
-                  <td>{item.product.name}</td>
-                  <td>{item.product.price}</td>
-                  <td data-testid='productTotal'>{item.total}</td>
-                  <td className='actions'>
+              <Table.Body key={item.product.id}>
+                <Table.Row
+                  data={item}
+                  index={item.product.id}
+                  key={item.product.id}
+                  data-testid='product'
+                >
+                  <Table.Cell data-testid='productQtt'>
+                    {item.quantity}
+                  </Table.Cell>
+                  <Table.Cell>{item.product.name}</Table.Cell>
+                  <Table.Cell>{item.product.price}</Table.Cell>
+                  <Table.Cell data-testid='productTotal'>
+                    {item.total}
+                  </Table.Cell>
+                  <Table.Cell className='actions'>
                     <button
                       data-testid='decreaseButton'
                       type='button'
@@ -54,14 +66,23 @@ const CartSummary = ({
                     >
                       +
                     </button>
-                  </td>
-                </tr>
-              </tbody>
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
             )
           })}
-        </table>
+          <Table.Pagination
+            page={page}
+            perPage={perPage}
+            total={cart.itens.length}
+            onChangePage={setPage}
+            onChangePerPage={setPerPage}
+          />
+        </Table>
       </CartBox>
-      Total: {cart.total}
+      <Typography size='medium' fontWeight='bold'>
+        Total: {cart.total}
+      </Typography>
     </Container>
   )
 }

@@ -1,16 +1,16 @@
-export const isMultipleOf = (target: Number, value: Number) => {
+export const isMultipleOf = (target: number, value: number) => {
   return +value % +target === 0
 }
 
-export const isMultipleOfAllTargets = (targets: Number[], value: Number) => {
+export const isMultipleOfAllTargets = (targets: number[], value: number) => {
   return targets.every((target) => +value % +target === 0)
 }
 
-export const isMultipleOfAnyTargets = (targets: Number[], value: Number) => {
+export const isMultipleOfAnyTargets = (targets: number[], value: number) => {
   return targets.some((target) => +value % +target === 0)
 }
 
-export const sumOfAllMultiplesBy = (targets: Number[], limit: Number) => {
+export const sumOfAllMultiplesBy = (targets: number[], limit: number) => {
   let result = 0
   for (let target = 1; target < limit; target++) {
     if (isMultipleOfAllTargets(targets, target)) {
@@ -20,7 +20,7 @@ export const sumOfAllMultiplesBy = (targets: Number[], limit: Number) => {
   return result
 }
 
-export const sumOfAnyMultiplesBy = (targets: Number[], limit: Number) => {
+export const sumOfAnyMultiplesBy = (targets: number[], limit: number) => {
   let result = 0
   for (let target = 1; target < limit; target++) {
     if (isMultipleOfAnyTargets(targets, target)) {
@@ -31,9 +31,9 @@ export const sumOfAnyMultiplesBy = (targets: Number[], limit: Number) => {
 }
 
 export const sumOfOrTargertAndTargetsBy = (
-  orTargets: Number[],
-  andTargets: Number[],
-  limit: Number
+  orTargets: number[],
+  andTargets: number[],
+  limit: number
 ) => {
   let result = 0
   for (let target = 1; target < limit; target++) {

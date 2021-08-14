@@ -30,7 +30,17 @@ it('should render a exercise two page', () => {
   expect(pretty(container.innerHTML)).toMatchInlineSnapshot(`
     "<div class=\\"sc-bdnxRM\\">
       <h1>Home</h1>
-      <div data-testid=\\"navbar\\" class=\\"sc-gtsrHT wxswG\\"><a role=\\"link\\" aria-label=\\"home\\" href=\\"/\\">Home</a><a role=\\"link\\" aria-label=\\"exerciseone\\" href=\\"/exerciseone\\">Exercise One</a><a role=\\"link\\" aria-label=\\"exercisetwo\\" href=\\"/exercisetwo\\">Exercise Two</a><a role=\\"link\\" aria-label=\\"exercisethree\\" href=\\"/exercisethree\\">Exercise Three</a><a role=\\"link\\" aria-label=\\"exercisefour\\" href=\\"/exercisefour\\">Exercise Four</a></div>
+      <div data-testid=\\"navbar\\" class=\\"sc-gtsrHT wxswG\\"><a role=\\"link\\" aria-label=\\"home\\" href=\\"/\\">
+          <p class=\\"MuiTypography-root text-0-3-1 text-d0-0-3-2  MuiTypography-body1\\">Home</p>
+        </a><a role=\\"link\\" aria-label=\\"exerciseone\\" href=\\"/exerciseone\\">
+          <p class=\\"MuiTypography-root text-0-3-1 text-d1-0-3-3  MuiTypography-body1\\">Exercise One</p>
+        </a><a role=\\"link\\" aria-label=\\"exercisetwo\\" href=\\"/exercisetwo\\">
+          <p class=\\"MuiTypography-root text-0-3-1 text-d2-0-3-4  MuiTypography-body1\\">Exercise Two</p>
+        </a><a role=\\"link\\" aria-label=\\"exercisethree\\" href=\\"/exercisethree\\">
+          <p class=\\"MuiTypography-root text-0-3-1 text-d3-0-3-5  MuiTypography-body1\\">Exercise Three</p>
+        </a><a role=\\"link\\" aria-label=\\"exercisefour\\" href=\\"/exercisefour\\">
+          <p class=\\"MuiTypography-root text-0-3-1 text-d4-0-3-6  MuiTypography-body1\\">Exercise Four</p>
+        </a></div>
     </div>"
   `)
 })

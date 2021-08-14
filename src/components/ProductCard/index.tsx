@@ -1,3 +1,4 @@
+import Box from '@eduzz/houston-ui/Box'
 import { Container } from './styles'
 
 type ProductCardType = {
@@ -21,7 +22,7 @@ function ProductCard({
   action,
 }: ProductCardType = defaultProductCard) {
   return (
-    <Container>
+    <Box xs={{ padding: 16, margin: 10 }} paper>
       <p>{product?.name}</p>
       <p>{product?.price}</p>
       <button
@@ -33,7 +34,7 @@ function ProductCard({
       >
         Adicionar
       </button>
-    </Container>
+    </Box>
   )
 }
 

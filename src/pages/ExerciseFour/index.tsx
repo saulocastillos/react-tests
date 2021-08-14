@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import Typography from '@eduzz/houston-ui/Typography'
 import { Container, ProductsBox } from './styles'
 
 import Navbar from '../../components/Navbar'
@@ -8,14 +10,26 @@ import useCart from '../../hooks/useCart'
 
 import { products } from '../../mocks/server.json'
 
+const defaultCart: Cart = {
+  id: 1,
+  user: null,
+  itens: [],
+  total: 0,
+}
+
 function ExerciseFour() {
-  const { cart, addItemOnCart, removeItemFromCart } = useCart()
+  const [cart, setCart] = useState<Cart>(defaultCart)
+  const { addItemOnCart, removeItemFromCart } = useCart({ cart, setCart })
 
   return (
     <Container data-testid='exercisefour'>
-      <h1>Exercise Four</h1>
+      <Typography size='xx-large' fontWeight='bold'>
+        Exercise Four
+      </Typography>
       <Navbar />
-      <h2>Store</h2>
+      <Typography size='medium' fontWeight='bold'>
+        Store
+      </Typography>
       <ProductsBox data-testid='productbox'>
         {products?.map((product) => {
           return (

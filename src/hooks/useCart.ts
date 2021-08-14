@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 const defaultCart: Cart = {
   id: 1,
@@ -7,9 +7,12 @@ const defaultCart: Cart = {
   total: 0,
 }
 
-const useCart = () => {
-  const [cart, setCart] = useState<Cart>(defaultCart)
+interface IuseCart {
+  cart: Cart
+  setCart: React.Dispatch<React.SetStateAction<Cart>>
+}
 
+const useCart = ({ cart = defaultCart, setCart }: IuseCart) => {
   const getTotalCart = (cart: Cart) => {
     const _itensTotals = cart.itens.map((cartItem) => cartItem.total)
     return _itensTotals.reduce((curr, acc) => curr + acc, 0)

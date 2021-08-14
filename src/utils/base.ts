@@ -1,8 +1,8 @@
-export const sumOfValues = (values: Number[]) => {
+export const sumOfValues = (values: number[]) => {
   return values.reduce((curr, acc) => curr.valueOf() + acc.valueOf(), 0)
 }
 
-export const sumOfSquareOfDigits = (value: Number) => {
+export const sumOfSquareOfDigits = (value: number) => {
   let result = 0
   const digits = value.toString().split('')
   digits.forEach((digit) => {
@@ -11,7 +11,7 @@ export const sumOfSquareOfDigits = (value: Number) => {
   return result
 }
 
-export const isPrime = (value: Number) => {
+export const isPrime = (value: number) => {
   for (let i = 2; i < value; i++) {
     if (+value % i === 0) return false
   }

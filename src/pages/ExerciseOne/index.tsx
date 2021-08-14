@@ -1,3 +1,4 @@
+import Typography from '@eduzz/houston-ui/Typography'
 import { Container } from './styles'
 import Navbar from '../../components/Navbar'
 
@@ -10,14 +11,16 @@ import {
 function ExerciseOne() {
   return (
     <Container data-testid='exerciseone'>
-      <h1>Exercise One</h1>
+      <Typography size='xx-large' fontWeight='bold'>
+        Exercise One
+      </Typography>
       <Navbar />
       <ul>
         <li>
           Qual é o valor da soma de todos os números múltiplos de 3 ou 5 de
           números naturais abaixo de 1000?
         </li>
-        {sumOfAnyMultiplesBy([3, 5], 1000)}
+        a{sumOfAnyMultiplesBy([3, 5], 1000)}
         <li>
           Qual é o valor da soma de todos os números múltiplos de 3 e 5 de
           números naturais abaixo de 1000?

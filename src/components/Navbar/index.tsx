@@ -20,7 +20,7 @@ function Navbar() {
       {links.map((item) => {
         const { name, link, ariaLabel } = item
         return (
-          <Link role='link' aria-label={ariaLabel} to={link}>
+          <Link key={name} role='link' aria-label={ariaLabel} to={link}>
             <Typography size='medium' fontWeight='bold'>
               {name}
             </Typography>

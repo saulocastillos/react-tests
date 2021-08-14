@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Typography from '@eduzz/houston-ui/Typography'
 import { Container } from './styles'
 import Navbar from '../../components/Navbar'
 
@@ -9,7 +10,9 @@ function ExerciseTwo() {
 
   return (
     <Container data-testid='exercisetwo'>
-      <h1>Exercise Two</h1>
+      <Typography size='xx-large' fontWeight='bold'>
+        Exercise Two
+      </Typography>
       <Navbar />
       <p>Dado um número natural qualquer, determina se é um número feliz</p>
       <input

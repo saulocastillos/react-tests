@@ -1,6 +1,6 @@
 import { sumOfSquareOfDigits } from './base'
 
-export const isAHappyNumber = (value: Number) => {
+export const isAHappyNumber = (value: number) => {
   const track = []
   let result = false
   let final = false

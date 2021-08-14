@@ -1,3 +1,4 @@
+import Typography from '@eduzz/houston-ui/Typography'
 import { Container } from './styles'
 import Navbar from '../../components/Navbar'
 
@@ -6,7 +7,9 @@ import { isThisWordPrimeHappyMultiple } from '../../utils'
 function ExerciseThree() {
   return (
     <Container data-testid='exercisethree'>
-      <h1>Exercise Three</h1>
+      <Typography size='xx-large' fontWeight='bold'>
+        Exercise Three
+      </Typography>
       <Navbar />
       <p>
         Um sistema que, quando executado, transforme uma palavra em um número,
